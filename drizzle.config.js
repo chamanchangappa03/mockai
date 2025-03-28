@@ -11,6 +11,6 @@ export default {
   schema: "./utils/schema.js",
   out: "./drizzle",
   dbCredentials:{
-    url:'postgresql://neondb_owner:HxA3UJNTgrm6@ep-winter-dream-a58aghuh.us-east-2.aws.neon.tech/neondb?sslmode=require'
+    url:'postgresql://neondb_owner:HxA3UJNTgrm6@ep-winter-dream-a58aghuh-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'
   }
 };

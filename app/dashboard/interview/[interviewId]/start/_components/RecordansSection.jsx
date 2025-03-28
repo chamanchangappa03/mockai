@@ -43,15 +43,22 @@ useEffect(()=>{
         setuserAnswer(prevAns=>prevAns+result?.transcript)
 ))
 },[results]);
-    const startstopRecording=async()=>{
-        if(isRecording){
-            stopSpeechToText();
-           
-        }
-        else{
-            startSpeechToText();
-        }
+useEffect(() => {
+    if (error) {
+        console.error("Speech recognition error:", error);
+        toast.error("Speech recognition error: " + error);
     }
+}, [error]);
+
+const startstopRecording = async () => {
+    if (isRecording) {
+        console.log("Stopping recording...");
+        stopSpeechToText();
+    } else {
+        console.log("Starting recording...");
+        startSpeechToText();
+    }
+};
     useEffect(()=>{
         if(!isRecording&&userAnswer?.length>10){
             UpdateuserAnswerinDB();
@@ -119,9 +126,7 @@ useEffect(()=>{
     >{isRecording ? 
     <h2 className='text-red-700 flex gap-2'>
         <Mic/>'Recording'
-    </h2> :
-    
-    'Start Recording'}</Button>
+    </h2> :'Start Recording'}</Button>
     
       <div className='flex mr-1 gap-3 '>
         {activeQuestions>0&&<Button
